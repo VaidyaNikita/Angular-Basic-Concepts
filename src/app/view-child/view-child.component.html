@@ -1,0 +1,14 @@
+<div class="info">
+   <div class="rorm-group">
+    <label class="form-label">Date of Birth:</label>
+    <input type="date" class="form-control" #dobInput (blur)="calculateAge()">
+   </div>
+   <div class="form-group">
+    <label class="form-label">Age:</label>
+     <input type="text" class="form-control" #ageInput>
+   </div>
+</div>
+<div>
+    <app-demo-child></app-demo-child>
+    {{demoComp.sayHello()}}
+</div>

@@ -1,0 +1,31 @@
+
+<div class="text-center">
+    <h1 class="my-5 text-danger bg-dark p-2">Our Cources</h1>
+<app-search-cource (searchTextEvent)="onSearchTextEnter($event)"></app-search-cource>
+
+<app-filter [all]="getTotalCources()"
+[free]="getTotalFreeCourses()"
+[premium]="getTotalPremiumCourses()"
+(selectedRadioButtonValueChange)="onFilterRadioButtonsChanged($event)"
+></app-filter>
+</div>
+<ng-container *ngFor="let course of courses">
+    <!-- courseCountRadioButtons == 'All' || courseCountRadioButtons === course.type" -->
+    <div class="course-container" *ngIf="searchText === '' || course.name.toLowerCase().includes(searchText) ">
+        <div class="course-card">
+            <div>
+                <img [src]="course.image" alt="" width="330px" height="180px;">
+            </div>
+            <div class="course-name"><h4>{{course.name}}</h4></div>
+            <div class="course-description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis.</p></div>
+            <div class="course-details">
+                <div class="course-type" [ngStyle]="{color:course.type === 'Free'? 'Green':'Red'}">{{course.type}}</div>
+                <div class="course-price"><b>Price:</b>${{course.price}}</div>
+            </div>
+            <div class="course-buttons">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-show">Show Details</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
